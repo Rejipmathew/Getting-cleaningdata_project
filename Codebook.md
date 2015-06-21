@@ -8,10 +8,11 @@ subject_test contains the ids
 6. Rearrange the data using id, loads activity_labels.txt, changes the data activity row to use the activity labels
 7. Saves the mean and std into mean_and_std.csv
 8. Saves the tidy dataset into tidy_dataset.csv
-9. Mean_and_std.csv
+
+## A. Mean_and_std.csv
 contains 1 0300 (including header) rows and 82 columns (including enumeration column) in a default csv format
 
-10. tidy_dataset.csv.csv
+## B. tidy_dataset.csv.csv
 contains 181 rows (including header) and 82 columns (including enumeration column) in a default csv format
 
 
