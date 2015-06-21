@@ -23,12 +23,12 @@
 #4) Appropriately labels the data set with descriptive variable names. 
 #5) Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-#download data
+#Download data
 library(httr) 
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 file <- "instancia.zip"
 
-#unzip and create folders (if those ain't exist)
+##Unzip and create folders ##
 datafolder <- "UCI HAR Dataset"
 resultsfolder <- "results"
 if(!file.exists(datafolder)){
@@ -40,7 +40,7 @@ if(!file.exists(resultsfolder)){
         dir.create(resultsfolder)
 } 
 
-#read txt and covnert to data.frame
+##Read txt and covnert to data.frame
 gettables <- function (filename,cols = NULL){
         print(paste("Getting table:", filename))
         f <- paste(datafolder,filename,sep="/")
@@ -53,10 +53,10 @@ gettables <- function (filename,cols = NULL){
         data
 }
 
-#run and check gettables
+##Run and check gettables
 features <- gettables("features.txt")
 
-#read data and build database
+##Read data and build database
 getdata <- function(type, features){
         print(paste("Getting data", type))
         subject_data <- gettables(paste(type,"/","subject_",type,".txt",sep=""),"id")
@@ -65,11 +65,11 @@ getdata <- function(type, features){
         return (cbind(subject_data,y_data,x_data))
 }
 
-#run and check getdata
+##Run and check getdata
 test <- getdata("test", features)
 train <- getdata("train", features)
 
-#save the resulting data in the indicated folder
+##Save the resulting data in the indicated folder
 saveresults <- function (data,name){
         print(paste("saving results", name))
         file <- paste(resultsfolder, "/", name,".csv" ,sep="")
@@ -78,16 +78,16 @@ saveresults <- function (data,name){
 
 ### required activities ###
 
-#1) merges the training and the test sets to create one data set.
+#1) Merges the training and the test sets to create one data set.
 library(plyr)
 data <- rbind(train, test)
 data <- arrange(data, id)
 
-#2) extracts only the measurements on the mean and standard deviation for each measurement. 
+#2) Extracts only the measurements on the mean and standard deviation for each measurement. 
 mean_and_std <- data[,c(1,2,grep("std", colnames(data)), grep("mean", colnames(data)))]
 saveresults(mean_and_std,"mean_and_std")
 
-#3) uses descriptive activity names to name the activities in the data set
+#3) Uses descriptive activity names to name the activities in the data set
 activity_labels <- gettables("activity_labels.txt")
 
 #4) appropriately labels the data set with descriptive variable names. 
