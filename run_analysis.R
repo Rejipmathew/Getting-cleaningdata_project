@@ -27,10 +27,6 @@
 library(httr) 
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 file <- "instancia.zip"
-if(!file.exists(file)){
-        print("descargando")
-        download.file(url, file, method="curl")
-}
 
 #unzip and create folders (if those ain't exist)
 datafolder <- "UCI HAR Dataset"
