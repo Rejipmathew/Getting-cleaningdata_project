@@ -12,7 +12,7 @@ subject_test contains the ids
 ## A. Mean_and_std.csv
 contains 1 0300 (including header) rows and 82 columns (including enumeration column) in a default csv format
 
-## B. tidy_dataset.csv.csv
+## B. tidy_dataset.csv
 contains 181 rows (including header) and 82 columns (including enumeration column) in a default csv format
 
 
